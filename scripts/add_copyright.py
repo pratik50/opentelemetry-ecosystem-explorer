@@ -4,7 +4,7 @@
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#     http://www.apache.org/licenses/LICENSE-2.0
+#     https://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -27,7 +27,7 @@ PY_HEADER = """\
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#     http://www.apache.org/licenses/LICENSE-2.0
+#     https://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -68,16 +68,26 @@ def get_header(filename: str) -> str | None:
 
 
 def add_header_to_file(filepath: str, header: str) -> None:
-    """Prepend the copyright header to the file if it is missing."""
+    """Prepend the copyright header to the file if it is missing or outdated."""
     with open(filepath, "r", encoding="utf-8", errors="ignore") as f:
         content = f.read()
-    if content.startswith(header.splitlines()[0] + "\n"):
+    if content.startswith("#!"):
         return
-    if content.startswith("#!"):  # skip shebang files
+    if content.startswith(header):
         return
+    # Remove old header if present and replace with new one
+    if content.startswith(header.splitlines()[0]):
+        lines = content.splitlines(keepends=True)
+        skip = 0
+        for line in lines:
+            if line.startswith("#") or line.startswith(" *") or line.startswith("/*") or line.strip() == "*/":
+                skip += len(line)
+            else:
+                break
+        content = content[skip:]
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(header + content)
-    logger.info("Added header: %s", filepath)
+    logger.info("Updated header: %s", filepath)
 
 
 def main() -> None:

@@ -13,11 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/**
- * Theme System
- *
- * To change the active theme update DEFAULT_THEME to the desired theme id.
- */
 
 export type ThemeId = "dark-blue";
 

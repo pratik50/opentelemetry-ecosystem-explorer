@@ -20,9 +20,8 @@ import {
   InstrumentationFilterBar,
 } from "@/features/java-agent/components/instrumentation-filter-bar.tsx";
 import { useMemo, useState } from "react";
-import { InstrumentationGroupCard } from "@/features/java-agent/components/instrumentation-group-card.tsx";
+import { InstrumentationCard } from "@/features/java-agent/components/instrumentation-card.tsx";
 import { getInstrumentationDisplayName } from "./utils/format";
-import { groupInstrumentationsByDisplayName } from "./utils/group-instrumentations";
 
 export function JavaInstrumentationListPage() {
   const { data: versionsData, loading: versionsLoading } = useVersions();
@@ -84,11 +83,6 @@ export function JavaInstrumentationListPage() {
     });
   }, [instrumentations, filters]);
 
-  const groupedInstrumentations = useMemo(
-    () => groupInstrumentationsByDisplayName(filteredInstrumentations),
-    [filteredInstrumentations]
-  );
-
   if (versionsLoading || instrumentationsLoading) {
     return (
       <div className="max-w-7xl mx-auto px-6 py-12">
@@ -148,10 +142,10 @@ export function JavaInstrumentationListPage() {
           </div>
         ) : (
           <div className="grid md:grid-cols-2 gap-4">
-            {groupedInstrumentations.map((group) => (
-              <InstrumentationGroupCard
-                key={group.displayName}
-                group={group}
+            {filteredInstrumentations.map((instr) => (
+              <InstrumentationCard
+                key={instr.name}
+                instrumentation={instr}
                 activeFilters={filters}
                 version={latestVersion}
               />
