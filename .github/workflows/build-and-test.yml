@@ -14,7 +14,7 @@ on:
       - 'ecosystem-automation/**'
       - 'ecosystem-explorer/**'
       - 'build-and-test.yml'
-      - '/scripts/**'
+      - 'scripts/**'
 
 jobs:
   check-copyright-headers:
