@@ -31,7 +31,7 @@ jobs:
             echo "is_primary=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Configure git 
+      - name: Configure git (primary repository)
         if: steps.repo_check.outputs.is_primary == 'true'
         run: |
           .github/scripts/use-cla-approved-bot.sh
@@ -43,7 +43,7 @@ jobs:
           app-id: ${{ vars.OTELBOT_APP_ID }}
           private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
 
-      - name: Configure git 
+      - name: Configure git (forked repository)
         if: steps.repo_check.outputs.is_primary == 'false'
         run: |
           git config user.name "github-actions[bot]"
