@@ -63,6 +63,14 @@ $defs:
           Configure maximum allowed time (in milliseconds) to export data. 
           Value must be non-negative. A value of 0 indicates no limit (infinity).
         defaultBehavior: 30000 is used
+      max_export_batch_size/development:
+        type:
+          - integer
+          - "null"
+        minimum: 1
+        description: |
+          Configure maximum export batch size.
+        defaultBehavior: no limit is used
       exporter:
         $ref: "#/$defs/PushMetricExporter"
         description: Configure exporter.
@@ -730,7 +738,7 @@ $defs:
         type:
           - string
         description: |
-          Configure meter names to match, evaluated as follows:
+          Configure meter names to match. Matching is case-sensitive, evaluated as follows:
 
            * If the meter name exactly matches.
            * If the meter name matches the wildcard pattern, where '?' matches any single character and '*' matches any number of characters including none.
