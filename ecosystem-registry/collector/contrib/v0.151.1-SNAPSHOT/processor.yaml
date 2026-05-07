@@ -1,5 +1,5 @@
 distribution: contrib
-version: 0.149.1-SNAPSHOT
+version: 0.151.1-SNAPSHOT
 repository: opentelemetry-collector-contrib
 component_type: processor
 components:
@@ -21,6 +21,20 @@ components:
       codeowners:
         active:
         - boostchicken
+- name: cardinalityguardianprocessor
+  metadata:
+    type: cardinality_guardian
+    status:
+      class: processor
+      stability:
+        development:
+        - metrics
+      distributions: []
+      codeowners:
+        active:
+        - atoulme
+        - YElayyat
+        - jmacd
 - name: coralogixprocessor
   metadata:
     type: coralogix
@@ -94,22 +108,26 @@ components:
       codeowners:
         active:
         - Aneurysm9
-- name: dnslookupprocessor
+- name: drainprocessor
   metadata:
-    type: dnslookup
-    display_name: DNS Lookup Processor
+    type: drain
+    display_name: Drain Processor
+    description: The Drain Processor applies the Drain log clustering algorithm to
+      log records as they pass through the pipeline, deriving a template string (e.g.
+      "user <*> logged in from <*>") and attaching it as an attribute on each record.
     status:
       class: processor
       stability:
-        development:
+        alpha:
         - logs
-        - metrics
-        - traces
+      distributions:
+      - contrib
+      - k8s
       codeowners:
         active:
-        - andrzej-stencel
-        - kaisecheng
-        - edmocosta
+        - MikeGoldsmith
+        - atoulme
+        - martinjt
 - name: filterprocessor
   metadata:
     type: filter
@@ -137,6 +155,19 @@ components:
         - bogdandrutu
         emeritus:
         - boostchicken
+- name: genainormalizerprocessor
+  metadata:
+    type: genainormalizer
+    display_name: GenAI Normalizer Processor
+    status:
+      class: processor
+      stability:
+        development:
+        - traces
+      distributions: []
+      codeowners:
+        active:
+        - TylerHelmuth
 - name: geoipprocessor
   metadata:
     type: geoip
@@ -238,6 +269,7 @@ components:
       codeowners:
         active:
         - atoulme
+        - aarvee11
 - name: k8sattributesprocessor
   metadata:
     type: k8s_attributes
@@ -384,7 +416,7 @@ components:
         type: string
 - name: logdedupprocessor
   metadata:
-    type: logdedup
+    type: log_dedup
     display_name: Log DeDuplication Processor
     description: The Log DeDuplication Processor is used to deduplicate logs by detecting
       identical logs over a range of time and emitting a single log with the count
@@ -471,7 +503,7 @@ components:
         - ridwanmsharif
 - name: metricstransformprocessor
   metadata:
-    type: metricstransform
+    type: metrics_transform
     display_name: Metrics Transform Processor
     status:
       class: processor
@@ -610,6 +642,7 @@ components:
         - MovieStoreGuy
         - ankitpatel96
         - dineshg13
+        - MikeGoldsmith
 - name: spanprocessor
   metadata:
     type: span
@@ -625,6 +658,21 @@ components:
       codeowners:
         active:
         - boostchicken
+- name: spanpruningprocessor
+  metadata:
+    type: spanpruning
+    display_name: Span Pruning Processor
+    status:
+      class: processor
+      stability:
+        alpha:
+        - traces
+      distributions:
+      - contrib
+      codeowners:
+        active:
+        - portertech
+        - csmarchbanks
 - name: sumologicprocessor
   metadata:
     type: sumologic
@@ -666,10 +714,12 @@ components:
       codeowners:
         active:
         - portertech
-        - Logiraptor
         - jmacd
+        - csmarchbanks
+        - carsonip
         emeritus:
         - jpkrohling
+        - Logiraptor
         seeking_new: true
     attributes:
       decision:
