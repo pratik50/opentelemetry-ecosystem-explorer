@@ -92,7 +92,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: LogRecordProcessor
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: event_to_span_event_bridge/development
+        status: unknown
   - type: MeterProvider
     status: supported
     propertyOverrides: []
@@ -131,7 +133,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: PeriodicMetricReader
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: max_export_batch_size/development
+        status: not_implemented
   - type: Propagator
     status: supported
     propertyOverrides: []
@@ -199,37 +203,40 @@ typeSupportStatuses:
     status: unknown
     propertyOverrides: []
   - type: ExperimentalComposableAlwaysOffSampler
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalComposableAlwaysOnSampler
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalComposableParentThresholdSampler
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalComposableProbabilitySampler
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSampler
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSamplerRule
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSamplerRuleAttributePatterns
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalComposableRuleBasedSamplerRuleAttributeValues
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalComposableSampler
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalContainerResourceDetector
     status: not_implemented
     propertyOverrides: []
   - type: ExperimentalDbInstrumentation
     status: unknown
+    propertyOverrides: []
+  - type: ExperimentalEventToSpanEventBridgeLogRecordProcessor
+    status: not_implemented
     propertyOverrides: []
   - type: ExperimentalGenAiInstrumentation
     status: unknown
@@ -286,7 +293,7 @@ typeSupportStatuses:
     status: supported
     propertyOverrides: []
   - type: ExperimentalProbabilitySampler
-    status: not_implemented
+    status: ignored
     propertyOverrides: []
   - type: ExperimentalProcessResourceDetector
     status: not_implemented

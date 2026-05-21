@@ -98,7 +98,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: LogRecordProcessor
     status: supported
-    propertyOverrides: []
+    propertyOverrides:
+      - property: event_to_span_event_bridge/development
+        status: unknown
   - type: MeterProvider
     status: supported
     propertyOverrides: []
@@ -144,6 +146,8 @@ typeSupportStatuses:
   - type: PeriodicMetricReader
     status: supported
     propertyOverrides:
+      - property: max_export_batch_size/development
+        status: not_implemented
       - property: producers
         status: not_implemented
   - type: Propagator
@@ -246,6 +250,9 @@ typeSupportStatuses:
     propertyOverrides: []
   - type: ExperimentalDbInstrumentation
     status: unknown
+    propertyOverrides: []
+  - type: ExperimentalEventToSpanEventBridgeLogRecordProcessor
+    status: supported
     propertyOverrides: []
   - type: ExperimentalGenAiInstrumentation
     status: unknown

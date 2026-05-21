@@ -1,5 +1,5 @@
 distribution: contrib
-version: 0.149.1-SNAPSHOT
+version: 0.152.1-SNAPSHOT
 repository: opentelemetry-collector-contrib
 component_type: extension
 components:
@@ -206,6 +206,7 @@ components:
         - axw
         - constanca-m
         - Kavindu-Dodan
+        - MichaelKatsoulis
 - name: azureencodingextension
   subtype: encoding
   metadata:
@@ -473,6 +474,21 @@ components:
         active:
         - dmitryax
         - rakesh-garimella
+- name: mcp
+  metadata:
+    type: mcp
+    display_name: MCP Server
+    status:
+      class: extension
+      stability:
+        development:
+        - extension
+      distributions: []
+      codeowners:
+        active:
+        - pavolloffay
+        - codeboten
+        - dmitryax
 - name: oauth2clientauthextension
   metadata:
     type: oauth2client
@@ -583,7 +599,7 @@ components:
     status:
       class: extension
       stability:
-        alpha:
+        deprecated:
         - extension
       distributions:
       - contrib

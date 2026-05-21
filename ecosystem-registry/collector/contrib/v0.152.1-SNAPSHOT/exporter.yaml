@@ -1,5 +1,5 @@
 distribution: contrib
-version: 0.149.1-SNAPSHOT
+version: 0.152.1-SNAPSHOT
 repository: opentelemetry-collector-contrib
 component_type: exporter
 components:
@@ -24,7 +24,7 @@ components:
     status:
       class: exporter
       stability:
-        unmaintained:
+        beta:
         - logs
         - metrics
         - traces
@@ -32,6 +32,8 @@ components:
       - contrib
       codeowners:
         active:
+        - vyagh
+        emeritus:
         - shabicheng
         - kongluoxing
         - qiansheng91
@@ -176,7 +178,7 @@ components:
         - hgaol
 - name: bmchelixexporter
   metadata:
-    type: bmchelix
+    type: bmc_helix
     display_name: BMC Helix Exporter
     status:
       class: exporter
@@ -392,7 +394,10 @@ components:
       - k8s
       codeowners:
         active:
+        - paulojmdias
+        emeritus:
         - atingchen
+        seeking_new: true
 - name: googlecloudexporter
   metadata:
     type: googlecloud
@@ -483,7 +488,7 @@ components:
         - mrsillydog
 - name: honeycombmarkerexporter
   metadata:
-    type: honeycombmarker
+    type: honeycomb_marker
     display_name: Honeycomb Marker Exporter
     status:
       class: exporter
@@ -494,6 +499,9 @@ components:
       - contrib
       codeowners:
         active:
+        - VinozzZ
+        - codeboten
+        emeritus:
         - TylerHelmuth
         - fchikwekwe
 - name: influxdbexporter
@@ -555,7 +563,7 @@ components:
         type: string
 - name: loadbalancingexporter
   metadata:
-    type: loadbalancing
+    type: load_balancing
     display_name: Load Balancing Exporter
     status:
       class: exporter
