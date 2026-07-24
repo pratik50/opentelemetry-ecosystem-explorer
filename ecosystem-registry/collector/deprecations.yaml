@@ -22,6 +22,12 @@ contrib:
     source_repo: opentelemetry-collector-contrib
     distributions: []
     subtype: null
+  - name: dnslookupprocessor
+    last_version: v0.149.0
+    deprecated_in_version: v0.157.0
+    source_repo: opentelemetry-collector-contrib
+    distributions: []
+    subtype: null
   receiver:
   - name: bigipreceiver
     last_version: v0.146.0
@@ -35,4 +41,11 @@ contrib:
     deprecated_in_version: v0.148.0
     source_repo: opentelemetry-collector-contrib
     distributions: []
+    subtype: null
+  - name: jmxreceiver
+    last_version: v0.149.0
+    deprecated_in_version: v0.157.0
+    source_repo: opentelemetry-collector-contrib
+    distributions:
+    - contrib
     subtype: null
